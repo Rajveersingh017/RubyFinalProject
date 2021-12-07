@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
+  # get 'songs/index'
+  # get 'songs/show'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  root to: 'songs#index'
+  resources :songs, only: %i[index show] do
+    collection do
+      get "search"
+    end
+  end
+
 end
