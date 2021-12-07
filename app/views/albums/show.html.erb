@@ -1,0 +1,9 @@
+<h2 class="display-5 mb-5 mt-2 " > <%= @album.title %> </h2>
+
+<samp>Songs in the <%= @album.title %> Album :</samp>
+
+<% @songs.each do |song| %>
+
+<%= song.title %>
+
+<% end %>

@@ -1,0 +1,11 @@
+<h1 class="display-6 mb-4 mt-5 mx-3" > All Albums </h1>
+
+
+<ol class="list-group list-group-flush mt-5">
+
+<% @albums.each do |album| %>
+
+<li class="list-group-item" > <%= link_to album.title, album %>  </li>
+
+<% end %>
+</ol>
