@@ -7,4 +7,5 @@ class Song < ApplicationRecord
   validates :genre, presence: true
   belongs_to :album
   belongs_to :store
+  paginates_per 9
 end
