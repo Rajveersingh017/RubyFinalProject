@@ -11,8 +11,7 @@ Store.destroy_all
     name:    "Jay-z Arena",
     email:   "iSellMusic@KleenCloset.com"
   )
-
-  10.times do
+  5.times do
     albums = Album.create(
       title:  Faker::Music::RockBand.song,
       rating: rand(1..10)
@@ -28,10 +27,15 @@ Store.destroy_all
           album: albums,
           store: store
       )
-    end
+      query = URI.encode_www_form_component([songs.title, albums.title].join(','))
+      download_image = URI.open("https://source.unsplash.com/600x600/?#{query}")
+      songs.image.attach(io: download_image, filename: "m-#{[songs.title, albums.title].join('-')}.jpg")
+      sleep(1)
     end
   end
+end
 
-  # if Rails.env.development?
-  # AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
-  # end
+
+#  if Rails.env.development?
+#   AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+#  end
