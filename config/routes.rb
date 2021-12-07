@@ -20,4 +20,5 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :cart, only: %i[index create destroy]
 end
