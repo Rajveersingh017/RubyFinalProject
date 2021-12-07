@@ -29,6 +29,7 @@ Store.destroy_all
           store: store
       )
     end
+    end
   end
 
   # if Rails.env.development?
