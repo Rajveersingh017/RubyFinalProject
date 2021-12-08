@@ -12,51 +12,54 @@
   </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">MUSIC</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" href="#">Kleen Music Store</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/albums">Albums</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/songs">Songs</a>
+          <a class="nav-link" aria-current="page" href="/songs">Songs</a>
         </li>
-
-         <li class="nav-item ms-5 mt-2">
+      <li class="nav-item ms-5 mt-2">
            <% if user_signed_in? %>
-  Logged in as <strong><%= current_user.email %></strong>.
-  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link ms-2' %> |
-  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link ms-2'  %>
-<% else %>
-  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link ms-2'  %> |
-  <%= link_to "Login", new_user_session_path, :class => 'navbar-link ms-2'  %>
-<% end %>
-        </li>
-
-        <li class="nav-item mx-2">
-          <%= link_to image_tag("cart.jpeg", width:60), cart_index_path %>
-        </li>
-        <li class="nav-item mx-2">
-        <div class="badge bg-primary text-wrap" style="width: 6rem;">
-         
-          <%if cart.present? %>
-          <p > <%= cart.size %> </p>
+            Logged in as <strong><%= current_user.email %></strong>.
+            <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link ms-2' %> |
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link ms-2'  %>
+          <% else %>
+            <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link ms-2'  %> |
+            <%= link_to "Login", new_user_session_path, :class => 'navbar-link ms-2'  %>
           <% end %>
-</div>
+        </li>
 
+        <%# <li class="nav-item">
+          <a class="nav-link disabled">Disabled</a>
+        </li> %>
       </ul>
-
-
-
-
+      <form class="d-flex">
+          <ul>
+            <li class="nav-item mx-2">
+              <%= link_to image_tag("cart.jpeg", width:60), cart_index_path %>
+            <%if cart.present? %>
+                <p class="text-white bg-dark">Items:  <%= cart.size %> </p>
+            <% end %>
+          </li>
+        </ul>
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
     </div>
   </div>
 </nav>
+
+
+
 
 <% if notice %>
   <p class="alert alert-success"><%= notice %></p>

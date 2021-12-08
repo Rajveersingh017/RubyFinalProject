@@ -1,7 +1,7 @@
 <%= paginate @songs %>
-<div class="row">
+<div class="row g-0">
 <% @songs.each do |song| %>
-<div class="col-sm-4 pb-4">
+<div class="col-md-4">
 
 <div class="card mb-3" style="max-width: 540px;">
   <div class="row g-0">
@@ -20,7 +20,7 @@
 
   <%= form_with url: cart_index_path, method: :post do   %>
     <%= hidden_field_tag(:id, song.id) %>
-      <%= button_tag 'Add to Cart' %>
+      <%= button_tag 'Add to Cart', class: "btn btn-primary"%>
     <% end %>
 
       </div>
